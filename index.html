@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <title>jQury designBook</title>
+</head>
+<body>
+  <h1>イベント</h1> 
+  <h2>click( )</h2>
+  <dl>
+    <dd>クリックする事でイベントが発生する</dd>
+    <dd>
+      <dd>$('セレクター').click(function(){<br>
+        &emsp;クリックされた時に実行する処理<br>
+      });
+    </dd>
+    <h3>テキスト等を変更する場合</h3>
+  <dd id="click"><h3>&lt;h3>変更前&lt;/h3></h3></dd>
+  <dd id="click-btn"><button>click!</button></dd>
+  <dd>$('#click-btn').click(function(){<br>
+    &emsp;$('#click').text('変わりました！');<br>
+  });
+  </dd>
+  </dd>
+  </dl>
+
+  <dl>
+    <h3>画像を変える場合</h3>
+    <dd><img src="image/ぬこ１.jpg" alt="ぬこ１" class="cat-1"></dd>
+    <dd><button id="img-chang-btn">画像を変更</button></dd>
+    <dd>$('#img-chang-btn').click(function(){<br>
+    &emsp;$('.cat-1').attr('src','image/ぬこ２.jpg').attr('atr','ぬこ２');<br>
+    });</dd>
+  </dl> 
+
+  <dl> 
+    <h3>a要素をクリックする場合</h3>
+    <a href="image/ぬこ８.jpg">画像を変更</a>
+    <dd><img src="image/ぬこ８.jpg" alt="ぬこ８"></dd>
+    <dd>上の「画像を変更」をクリックすると写真のリンクに飛んでしまう</dd>
+    <dd>そうではなくてクリックで画像などを変えたい場合は return false; を使う</dd>
+    
+      <a href="image/ぬこ８.jpg" class="a-click">画像を変更</a>
+      <dd><img src="image/ぬこ８.jpg" alt="ぬこ８" class="a-change"></dd>
+      <dd>$('a').click(function(){<br>
+        &emsp;$('img').attr('src','image/ぬこ９.jpg').attr('alt','ぬこ９');<br>
+        &emsp;&emsp; return false;<br>
+        &emsp;});</dd>
+      <dd>return false;はこの場合aをクリックするとfalseを返すのでリンクを無効化でき、その前でやりたい処理の命令を出すことができる</dd> 
+      <dd><a href="https://google.com">googleへ</a><span>こちらはリンク先に飛ぶが</span> </dd>
+      <dd><a href="https://google.com" class="google-link">googleへ</a><span>こちらはリンク先に飛ばずにアラートが出ます</span></dd>
+      <dd>$('a').click(function(){<br>
+        &emsp;alert('移動しません');<br>
+        &emsp;&emsp; return false;<br>
+        &emsp;});</dd>
+  <dd>それを応用するとクリックによってスライドを変えられるようなものができる</dd>
+  <div>
+    <ul class="slide-image">
+      <li><a href="image/spring.jpg">春</a></li>
+      <li><a href="image/ひまわり２.jpg">夏</a></li>
+      <li><a href="image/autmn.jpg">秋</a></li>
+      <li><a href="image/winter.jpg">冬</a></li>
+    </ul>
+    <dd>それぞれクリックすると写真が変わる</dd>
+    <dd><p><img src="image/spring.jpg" alt="春"></p></dd>
+  </div>
+  </dl>
+  
+
+  <h2>dblclick( )</h2>
+  <dl>
+    <dd>
+      <dd>ダブルクリックされた時にイベントが発生する</dd>
+      <dd>$('セレクター').dblclick(function(){<br>
+        &emsp;ダブルクリックされた時に実行する処理<br>
+      });</dd>
+      <dd><img src="image/ぬこ３.jpg" alt="" class="cat-3"></dd>
+      <dd><button id="img-chang-dblbtn">ダブルクリックで画像を変更</button></dd>
+      <dd>$('#img-chang-dblbtn').dblclick(function(){<br>
+        &emsp;$('.cat-3').attr('src','image/ぬこ４.jpg').attr('atr','ぬこ４');<br>
+      });</dd>
+    </dd>
+  </dl>
+  <dl>
+
+  <h2>mousedown( )/mouseup( )</h2>
+  <dl>
+  <dd>mousedown( )とmouseup( )は特定の要素の上で何らかのボタンが押されたり離されたりした時に処理を実行するもの</dd>
+    <dd>
+      <dd>$('セレクター').mousedown( )(function(){<br>
+        &emsp;マウスダウンされた時に実行する処理<br>
+      });</dd>
+      <dd>$('セレクター').mouseup( )(function(){<br>
+        &emsp;マウスアップされた時に実行する処理<br>
+      });</dd>
+      <dd><img src="image/ぬこ５.jpg" alt="" class="cat-5"></dd>
+      <dd><button id="mouseup-btn">マウスボタンを長押しすると画像が変更、離すと戻る</button></dd>
+      <dd>$('#mouseup-btn').mousedown(function(){<br>
+        &emsp;$('.cat-5').attr('src','image/ヒョウ１.jpg').attr('atr','ヒョウ１');<br>
+      });</dd>
+      <dd>$('#mouseup-btn').mouseup(function(){<br>
+        &emsp;$('.cat-5').attr('src','image/ぬこ５.jpg').attr('atr','ぬこ５');;<br>
+      });</dd>
+    </dd>
+  </dl>
+
+  <h2>mouseover( )/mouseout( )</h2>
+  <dl>
+  <dd>mouseover( )とmouseout( )は特定の要素の上でマウスが重なったり外れたりした時に処理を実行するもの</dd>
+    <dd>
+      <dd>$('セレクター').mouseover( )(function(){<br>
+        &emsp;マウスが重なった時に実行する処理<br>
+      });</dd>
+      <dd>$('セレクター').mouseout( )(function(){<br>
+        &emsp;マウスが外れた時に実行する処理<br>
+      });</dd>
+      <dd><img src="image/ぬこ６.jpg" alt="" class="cat-6"></dd>
+      <dd><button id="mouseover-btn">ここにマウスが乗ると画像が変わり、外れると戻る</button></dd>
+      <dd> $('#mouseover-btn').mouseover(function(){<br>
+        &emsp;$('.cat-6').attr('src','image/ぬこ７.jpg').attr('atr','ぬこ７');<br>
+      });</dd>
+      <dd>$('#mouseover-btn').mouseout(function(){<br>
+        &emsp;$('.cat-6').attr('src','image/ぬこ６.jpg').attr('atr','ぬこ６');<br>
+      });</dd>
+      <dt>バブリング</dt>
+      <dd>
+        <div class="box">
+          <div class="in">ここまでおいで</div>
+        </div>
+      </dd>
+      <dd>mouseover( )/mouseout( )では指定した要素内に子要素があるとその子要素においてもイベントが実行される。これをバブリングという</dd>
+      <dd>上の例では白枠のところにカーソルが乗るとイベントが実行されるようにしたかったが子要素の青い箱に触れてもイベントが適用されてしまう(複数回イベントが実行される)</dd>
+      <dd></dd>
+    </dd>
+  </dl>
+
+
+  <h2>hover( )</h2>
+  <dl>
+  <dd>対象にカーソルが乗った時や降りた時に処理が実行される点ではmouseover( )とmouseout( )と似ているがhover( )の場合は指定された要素のみに影響を与え、子要素へは影響を与えない</dd>
+    <dd>
+      <div class="box2">
+        <div class="in2">ここまでおいで</div>
+      </div>
+    </dd>
+    <dd><h2>特別な理由がなければhover( )を使う方が良い</h2></dd>
+    <dd>hover( )は乗った時と降りた時の処理を両方書く必要がある</dd>
+     <dd>$('#box').hover(function( ){<br>
+        &emsp; $('.inner').animate({fontSize : '24px'}, 500);<br>
+        &emsp; },function( ){<br>
+          &emsp; $('.inner').animate({fontSize : '16px'}, 500);<br>
+      });
+      </dd>
+  </dl>
+<h2>mousemove( )</h2>
+  <dl>
+    <dd>特定の要素上でカーソルが動いた場合に処理を実行する</dd>
+    <dd>座標情報を取得するのに使われる</dd>
+    <dd>X座標<input type="text" id="inputX"></dd>
+    <dd>Y座標<input type="text" id="inputY"></dd>
+    <dd>$('body').mouseover(function(e){<br>
+      &emsp;$('#inputX').val(e.clientX);;<br>
+      &emsp; $('#inputY').val(e.clientY);<br>
+      });</dd>
+  </dl>
+
+  <h2>one( )</h2>
+  <dl>
+    <dd>指定したイベントを一回だけ実行する</dd>
+    <dd>$('#one').one('イベントの発生条件',function(){<br>
+      &emsp;イベント発生時に実行する処理<br>
+    });</dd>
+    <dd> $('p').text($('h1').text( ) );</dd>
+    <dd id="get-text">&ltp>&lt/p></dd>    
+    <dd>クリックイベントを一回押すと画像が変わるが二回目にクリックすると画像のリンク先に飛ぶ</dd>
+    <dd><a href="image/rain.jpg" id="one">one</a></dd>
+    <dd><img src="image/rain.jpg" alt="rain" id="one-change"></dd>
+    <dd>$('#one').one('click',function(){<br>
+      &emsp;$('#one-change').attr('src','image/rainbow.jpg')<br>
+      &emsp; return false;<br>
+    });</dd>
+  </dl>
+
+  <h2>on( )</h2>
+  <dl>
+    <dd>これまでのイベントの異なる書き方。on( )を使っても結果は同じようになる</dd>
+    <dd>$('セレクター').on('イベントの発生条件',function( ){<br>
+      &emsp;イベント発生時に実行する処理<br>
+      &emsp;});</dd>
+    <dd></dd>
+    <dd><button id="on">push!</button></dd>
+    <dd>ボタンをクリックする度に要素が前に作られる</dd>
+    <dd>$('push').click(function(){<br>
+      &emsp;$(this).before('&lt;dd> id="new">NEW!!&lt;/dd>');<br>
+         &emsp;}); 
+    </dd> 
+    <dd>これらの要素に変化やイベントを与える事はできない</dd>
+    <dd>→動的に作った要素はまだドキュメントが読み込まれた時に存在していないため</dd>
+    <dd>そこでon( )の出番</dd>
+    <dd>
+      &emsp;$('親要素').on('イベント発生の条件','イベント発生の対象',function( ){<br>
+        &emsp; &emsp;イベント発生時に実行する処理<br>
+         &emsp;});  
+    </dd>
+    <dd>こうする事で動的に作った要素にもイベントや変化を与えられる</dd>
+    <dd><button id="on-2">push!</button></dd>
+    <dd>ボタンを押して動的に作った要素にマウスを載せるとcssが効いてクリックすると消える</dd>
+    <dd>$('dd').on('mouseover', '#new-2',function( ){<br>
+      &emsp;$(this).css({'backgroundColor':'red',略}).click(<br>
+      &emsp;function( ){<br>
+        &emsp; $(this).remove( );<br>
+        &emsp; });<br>
+        &emsp;});
+    </dd>
+  </dl>
+ <script src="js/main.js"></script>
+</body>
+</html>
